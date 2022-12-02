@@ -1,6 +1,9 @@
-package Services;
+package Services.children;
 
-public class Donations extends Service{
+import Services.Service;
+import Services.observer;
+
+public class Donations extends Service implements observer {
     Service category;
 
     public void setCategory(Service category) {
@@ -9,5 +12,7 @@ public class Donations extends Service{
 
     public Service getCategory() {
         return category;
+    }
+    public void update(){
     }
 }

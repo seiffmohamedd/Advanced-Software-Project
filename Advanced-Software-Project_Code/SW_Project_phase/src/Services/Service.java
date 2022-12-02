@@ -1,14 +1,17 @@
 package Services;
 
 import Discounts.Discount;
+import ServicesProvider.ServiceProvider;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Service {
     String Description;
     double totalCost;
     String number;
-    public void update(){
 
-    }
+    List <ServiceProvider> SPs=new ArrayList<>();
     public boolean hasDiscount(Discount d){
         boolean h = true;
         return h;
