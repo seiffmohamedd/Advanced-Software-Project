@@ -6,6 +6,18 @@ import java.util.List;
 
 public class form implements FormComponent{
     List<FormComponent> componentList = new ArrayList<>();
-    public void Display(){}
-    public void submit(){}
+    String name ;
+    void setName(String n){
+        name = n;
+    }
+    void addComponent(FormComponent C){
+        componentList.add(C);
+    }
+    public void display(){
+        System.out.println(name);
+        for (FormComponent C : componentList){
+            C.display();
+        }
+        System.out.println("----------------");
+    }
 }

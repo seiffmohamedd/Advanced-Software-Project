@@ -1,9 +1,9 @@
 package Admination;
 
-import User.user;
+import User.userInfo;
 
 public class Refund {
-    user u;
+    userInfo u;
     int paymentID;
     String refundStatus;
 
@@ -15,7 +15,7 @@ public class Refund {
         this.refundStatus = refundStatus;
     }
 
-    public void setU(user u) {
+    public void setU(userInfo u) {
         this.u = u;
     }
     public void refundInfo(){

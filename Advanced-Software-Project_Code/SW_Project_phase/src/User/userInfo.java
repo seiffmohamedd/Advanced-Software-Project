@@ -3,7 +3,7 @@ package User;
 import Payment.creditInfo;
 import Payment.payment;
 
-public class user {
+public class userInfo {
     creditInfo credits ;
     String userName ;
     String password ;

@@ -1,6 +1,6 @@
 package Form.Fields;
 
-import Form.Fields.Field;
+import java.util.Scanner;
 
 public class TextField extends Field {
     String content;
@@ -8,10 +8,12 @@ public class TextField extends Field {
         Title=title;
     }
     public void editContent(){
+        Scanner n = new Scanner(System.in);
+        content=n.nextLine();
     }
-
-    public void setContent(String content) {
-        this.content = content;
+    public void display(){
+        System.out.println(name);
+        System.out.println(content);
     }
 
     public String getContent() {
