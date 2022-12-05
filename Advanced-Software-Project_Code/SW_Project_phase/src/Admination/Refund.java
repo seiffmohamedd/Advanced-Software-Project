@@ -1,9 +1,11 @@
 package Admination;
 
+import Payment.CreditCard;
+import Payment.creditInfo;
 import User.userInfo;
 
 public class Refund {
-    userInfo u;
+    creditInfo C;
     int paymentID;
     String refundStatus;
 
@@ -15,8 +17,8 @@ public class Refund {
         this.refundStatus = refundStatus;
     }
 
-    public void setU(userInfo u) {
-        this.u = u;
+    public void setCreditInfo(creditInfo c) {
+        this.C = c;
     }
     public void refundInfo(){
         System.out.println(paymentID + refundStatus );

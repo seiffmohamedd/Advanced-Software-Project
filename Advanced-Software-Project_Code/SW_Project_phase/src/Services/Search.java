@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Search {
     List<Service> serviceList = new ArrayList();
-    public List<Service> searchByName(String searchedService){
+    public List<Service> searchByDescription(String searchedService){
         List<Service> serviceList2 = new ArrayList();
         for (Service sss : serviceList){
-            if(searchedService == sss.getNumber()){
+            if(searchedService == sss.getDescription()){
                 serviceList2.add(sss);
             }
         }
@@ -20,5 +20,10 @@ public class Search {
     }
     public void setServiceList(List<Service> serviceList) {
         this.serviceList = serviceList;
+    }
+    public void displayAllSearchedServices(){
+        for (Service s : serviceList){
+            System.out.println(s.getDescription());
+        }
     }
 }

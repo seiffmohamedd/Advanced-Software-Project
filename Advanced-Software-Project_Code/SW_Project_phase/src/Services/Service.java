@@ -1,27 +1,19 @@
 package Services;
 
-import Discounts.Discount;
 import ServicesProvider.ServiceProvider;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Service {
-    String Description;
+    public String Description;
     double totalCost;
-    String number;
-
+    long number;
     List <ServiceProvider> SPs=new ArrayList<>();
-    public boolean hasDiscount(Discount d){
-        boolean h = true;
-        return h;
-    }
     public String getDescription(){
         return Description;
     }
-    public String getNumber(){
-        return number;
-    }
+
     public double getTotalCost(){
         return totalCost;
     }
@@ -29,12 +21,20 @@ public class Service {
     public void setDescription(String description) {
         Description = description;
     }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }
+
+    public void addServiceProvider(ServiceProvider s){
+        SPs.add(s);
+    }
+    public ServiceProvider getServiceProviderByNumber(long n){
+        for (ServiceProvider s : SPs){
+          if (s.getNumber()==n){
+              return s;
+          }
+        }
+        return null;
+    }
+
 }

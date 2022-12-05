@@ -1,10 +1,9 @@
 package Discounts;
 
 import Services.Service;
-import Services.children.Donations;
 
 public abstract class  Discount  extends Service {
-    float cost ;
+    float discountAmount;
     Service s = new Service();
     public void setService(Service ss){
         this.s = ss ;
@@ -12,11 +11,16 @@ public abstract class  Discount  extends Service {
     public Service getService() {
         return s;
     }
-    public void setCost(float cost) {
-        this.cost = cost;
+    public void setDiscountAmount(float discountAmount) {
+        this.discountAmount = discountAmount;
     }
     @Override
     public double getTotalCost() {
-        return s.getTotalCost()*cost;
+        return s.getTotalCost()* 0.8;
+    }
+
+    @Override
+    public String getDescription() {
+        return s.getDescription()+" with discount"+discountAmount;
     }
 }
