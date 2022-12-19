@@ -1,4 +1,2 @@
 # Advanced-Software-Project
-# Abstract factory for service provider
-## remained
-### nothing remained
+##Phase 2 in progress
