@@ -9,12 +9,17 @@ public class Service {
     public String name;
     double totalCost;
     long number;
+    private boolean acceptDelivery;
+    
     List <ServiceProvider> SPs=new ArrayList<>();
     
-    public Service(){}
+    public Service(){
+    	acceptDelivery = false;
+    }
     
     public Service(String name){
 		this.name = name;
+		acceptDelivery = false;
 	}
     
     public String getName(){

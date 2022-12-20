@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import Admination.*;
+import Form.*;
 import Services.*;
 import UsersData.*;
 import User.*;
-
+import ServicesProvider.*;
 
 @RestController
 public class MainController {
@@ -25,22 +26,29 @@ public class MainController {
 	// All users should be stored in a class 
 	usersData usersdata = new usersData();
 	
+	//Create Services Factory && Service Provider Factory
+	ServiceFactory serviceFactory = new ServiceFactory();
+	ServiceProviderFactory spFactory = new ServiceProviderFactory();
 	// we have 4 initial services  
-	Service mobileRecharge = new Service("Mobile Recharge");
-	Service internetPaymnet = new Service("Internet Payment");
-	Service landLine = new Service("Land Line");
-	Service Donation = new Service("Donation");
+	Service mobileRecharge;
+	Service internetPaymnet;
+	Service landLine ;
+	Service Donation ;
 	
 	// one search class to search through services
 	Search searcher = new Search();
 	
 	// this function will act like the Main function in normal console application
 	void intiateMain() {
+	
+		mobileRecharge = serviceFactory.createService("Mobile recharge");
+		internetPaymnet = serviceFactory.createService("Internet Payment");
+		landLine = serviceFactory.createService("Landline");
+		Donation = serviceFactory.createService("Donations");
 		searcher.addService(mobileRecharge);
 		searcher.addService(internetPaymnet);
 		searcher.addService(landLine);
 		searcher.addService(Donation);
-			
 	}
 	
 	
@@ -86,6 +94,23 @@ public class MainController {
 		return searcher.searchByName(serviceName);
 	}
 	
+	@PostMapping("/admin/addsp")
+	String addServiceProvider(@RequestBody Map <String,String> json){
+		
+		String name = json.get("name").toString();
+		String serviceName = json.get("serviceName").toString();
+		Service service = serviceFactory.createService(serviceName);
+		long number = Long.parseLong(json.get("number"));
+		int formComponentsNumber = Integer.parseInt(json.get("formComponentsNumber"));
+		FormComponent sForm = new form();
+		String fieldsContainer = "formComponent";
+		for(int i = 0;i < formComponentsNumber ;i++) {
+			String tmp = fieldsContainer + String.valueOf(i);
+			json.get(tmp).toString();
+		}
+		ServiceProvider serviceProvider = spFactory.createServiceProvider(name,service,number,sForm);
+		return "Service Provider added successfully";
+	}
 	
 }
 

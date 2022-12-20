@@ -4,15 +4,17 @@ import Services.Service;
 import Services.observer;
 
 public class Donations extends Service implements observer {
-    Service category;
+    
+    private static Donations instance;
 
-    public void setCategory(Service category) {
-        this.category = category;
+    private Donations(){}
+
+    public static Donations getInstance() {
+        if (instance == null) {
+            instance = new Donations();
+        }
+        return instance;
     }
 
-    public Service getCategory() {
-        return category;
-    }
-    public void update(){
-    }
+	public void update(){}
 }
