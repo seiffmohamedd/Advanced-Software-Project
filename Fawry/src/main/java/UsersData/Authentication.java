@@ -4,6 +4,7 @@ import User.userInfo;
 
 public abstract class Authentication {
    
+	
 	usersData Data =new usersData();
     String Email ;
     String Password;
@@ -15,6 +16,14 @@ public abstract class Authentication {
 		Password = password;
 		this.userName = userName;
 	}
+    
+    public Authentication(usersData data, String email, String password) {
+		super();
+		Data = data;
+		Email = email;
+		Password = password;
+	}
+    
     public boolean checkValidation() {
         return true;
     }

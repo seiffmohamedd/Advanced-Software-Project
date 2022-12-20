@@ -3,14 +3,21 @@ package UsersData;
 import User.userInfo;
 
 public class SignIn extends Authentication {
-    @Override
+    
+	
+	
+	public SignIn(usersData data, String email, String password) {
+		super(data, email, password);
+		// TODO Auto-generated constructor stub
+	}
+	@Override
     public boolean checkValidation() {
         return Data.searchForEmailAndPassword(getEmail(),getPassword());
     }
-    public userInfo Join(){
+    public boolean Join(){
         if(checkValidation()){
-            return Data.GetUserByUserEmail(getEmail());
+            return true;
         }
-        return null;
+        return false;
     }
 }
