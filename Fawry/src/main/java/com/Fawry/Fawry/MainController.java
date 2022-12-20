@@ -63,4 +63,10 @@ public class MainController {
 		return "bn3ml test l haga bs";
 	}
 	
+	@GetMapping("/FinalTrial")
+	String FinalTrial()
+	{
+		return "Final Test ISA";
+	}
 }
+
