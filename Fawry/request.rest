@@ -1,0 +1,31 @@
+GET http://localhost:8080/display?id=0 HTTP/1.1
+
+###
+
+POST  http://localhost:8080/signup HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "luci@albi.com",
+    "password": "20200239" ,
+    "username" : "Luci Russo"
+}
+###
+
+POST  http://localhost:8080/signin HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "luci@albi.com",
+    "password": "20200239" ,
+}
+
+
+# ###
+# POST  http://localhost:8080/create HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "name": "Abdelrahman",
+#     "password": "Orcawy"
+# }
