@@ -30,4 +30,22 @@ public class MainController {
 		
 	}
 	
+	@PostMapping(value = "/signup")
+	String signUp(@RequestBody Map <String,String> JSON){
+		
+		String userName = JSON.get("username").toString();
+		String email = JSON.get("email").toString();
+		String password = JSON.get("password").toString();
+		
+		Authentication signup = new SignUp(usersdata,email,password,userName);
+		
+		if(signup.Join()){
+			return "Signed-Up successfully";
+		}
+		else {
+			return "E-mail already exists";
+		}
+		
+	}
+	
 }
