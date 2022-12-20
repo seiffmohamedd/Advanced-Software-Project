@@ -55,6 +55,12 @@ public class MainController {
 	{
 		return "I love shab orca awe";
 	}
+
 	
+	@GetMapping("/trial")
+	String trial()
+	{
+		return "bn3ml test l haga bs";
+	}
 	
 }
