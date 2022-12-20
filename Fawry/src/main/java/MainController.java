@@ -1,6 +1,7 @@
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +47,12 @@ public class MainController {
         else {
             return "Wrong password or email";
         }
+	}
+	
+	@GetMapping("/love")
+	String showlove()
+	{
+		return "I love shab orca awe";
 	}
 	
 }

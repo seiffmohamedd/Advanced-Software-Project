@@ -49,6 +49,7 @@ public class MainController {
             return "Wrong password or email";
         }
 	}
+	
 	@GetMapping("/love")
 	String showlove()
 	{
