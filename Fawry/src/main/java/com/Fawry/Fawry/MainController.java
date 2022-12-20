@@ -69,4 +69,10 @@ public class MainController {
 		return "amoot ana";
 	}
 	
+	@GetMapping("/FinalTrial")
+	String FinalTrial()
+	{
+		return "Final Test ISA";
+	}
 }
+
