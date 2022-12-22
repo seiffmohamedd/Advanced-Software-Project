@@ -1,0 +1,68 @@
+# GET http://localhost:8080/display?id=0 HTTP/1.1
+
+# ###
+
+# POST  http://localhost:8080/signup HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "email": "luci@albi.com",
+#     "password": "20200239" ,
+#     "username" : "Luci Russo"
+# }
+# ###
+
+# POST  http://localhost:8080/signin HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "email": "luci@albi.com",
+#     "password": "20200239" ,
+# }
+
+
+# ###
+# POST  http://localhost:8080/create HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "name": "Abdelrahman",
+#     "password": "Orcawy"
+# }
+
+
+
+
+GET http://localhost:8080/love HTTP/1.1
+
+###
+
+POST  http://localhost:8080/signup HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "orcawy",
+    "email": "orcawy@gmail.com",
+    "password": "20201114"
+}
+
+###
+POST  http://localhost:8080/signin HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "seif@gmail.com",
+    "password": "20200239"
+}
+###
+POST  http://localhost:8080/admin/addsp HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Vodafone Cash",
+    "serviceName": "Mobile recharge",
+    "number" : "96109382128",
+    "formComponentsNumber": "2",
+    "formComponent0" : "0Mobile Number",
+    "formComponent1" : "1Amount"
+}
