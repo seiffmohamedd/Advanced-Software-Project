@@ -6,34 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Service {
-    public String name;
+    public String Description;
     double totalCost;
     long number;
-    private boolean acceptDelivery;
-    
     List <ServiceProvider> SPs=new ArrayList<>();
-    
-    public Service(){
-    	acceptDelivery = false;
-    }
-    
-    public Service(String name){
-		this.name = name;
-		acceptDelivery = false;
-	}
-    
-    public String getName(){
-        return name;
+    public String getDescription(){
+        return Description;
     }
 
     public double getTotalCost(){
         return totalCost;
     }
 
-    
-
-	public void setDescription(String description) {
-        name = description;
+    public void setDescription(String description) {
+        Description = description;
     }
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;

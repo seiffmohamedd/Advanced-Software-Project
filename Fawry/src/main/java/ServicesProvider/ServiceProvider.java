@@ -6,21 +6,10 @@ import Form.FormComponent;
 import Services.Service;
 
 public class ServiceProvider {
-    
-	
-    
-	String name ;
+    String name ;
     public Service s ;
     long number ;
     FormComponent f ;
-    
-    public ServiceProvider(String name, Service s, long number, FormComponent f) {
-		this.name = name;
-		this.s = s;
-		this.number = number;
-		this.f = f;
-	}
-    
     public Service providedService(){
         return s ;
     }
