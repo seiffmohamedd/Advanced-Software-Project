@@ -1,5 +1,7 @@
 package Form;
 
 public class Handler {
-    void Display (){}
+    String Display (){
+    	return "your inputs has been recorded successfully";
+    }
 }
