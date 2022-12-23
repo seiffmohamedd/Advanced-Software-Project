@@ -64,14 +64,9 @@ public class creditInfo {
             System.out.println("the credit card already exist");
         }
     }
-    public void chargeWallet(CreditCard c,double amount){
-        if(amount>c.getBalance()){
-            System.out.println("the amount of recharge is more than your credit card Balance");
-        }
-        else {
-            wallet.setBalance(wallet.getBalance()+amount);
-            c.setBalance(c.getBalance()-amount);
-        }
+    public String chargeWallet(int amount){
+    	wallet.setBalance(wallet.getBalance()+amount);
+    	return "amount added successfully";
     }
     public void printCreditsInfo(){
         for (CreditCard C : credits){

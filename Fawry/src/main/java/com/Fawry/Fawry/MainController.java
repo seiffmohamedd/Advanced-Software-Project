@@ -113,8 +113,21 @@ public class MainController {
 			sForm.addComponent(field);
 		}
 		ServiceProvider serviceProvider = spFactory.createServiceProvider(name,service,number,sForm);
-		service.addServiceProvider(serviceProvider);
-		return "Service Provider added successfully";
+		return service.addServiceProvider(serviceProvider);
+	}
+	
+	@PostMapping("/walletrecharge")
+	String addToWallet(@RequestBody Map <String,String> json){
+		
+		String userName = json.get("username").toString();
+		
+		userInfo user = usersdata.getByUserName(userName);
+		
+		int amount = Integer.parseInt(json.get("amount").toString());
+		
+		user.getCredits().chargeWallet(amount);
+		
+		return user.getCredits().chargeWallet(amount);
 	}
 	
 }

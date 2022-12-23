@@ -3,17 +3,17 @@ package Payment;
 import Services.Service;
 
 public class Wallet extends payment{
-    double balance =0;
+    int balance =0;
     public boolean validAmount(){
         if(s.getTotalCost()>balance){
             return false;
         }
         return true;
     }
-    public void setBalance(double balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
-    public double getBalance() {
+    public int getBalance() {
         return balance;
     }
 }

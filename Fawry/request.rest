@@ -66,3 +66,13 @@ Content-Type: application/json
     "formComponent0" : "0Mobile Number",
     "formComponent1" : "1Amount"
 }
+
+###
+
+POST  http://localhost:8080/walletrecharge HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "orcawy",
+    "amount"  : "100"
+}

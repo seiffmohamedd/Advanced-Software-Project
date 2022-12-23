@@ -39,8 +39,9 @@ public class Service {
         this.totalCost = totalCost;
     }
 
-	public void addServiceProvider(ServiceProvider s){
+	public String addServiceProvider(ServiceProvider s){
         SPs.add(s);
+        return "Service Provider added successfully";
     }
     public ServiceProvider getServiceProviderByNumber(long n){
         for (ServiceProvider s : SPs){
