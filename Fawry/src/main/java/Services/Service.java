@@ -9,17 +9,17 @@ public class Service {
     public String name;
     double totalCost;
     long number;
-    private boolean acceptDelivery;
+    private boolean acceptCash;
     
     List <ServiceProvider> SPs=new ArrayList<>();
     
     public Service(){
-    	acceptDelivery = false;
+    	acceptCash = false;
     }
     
     public Service(String name){
 		this.name = name;
-		acceptDelivery = false;
+		acceptCash = false;
 	}
     
     public String getName(){
@@ -39,7 +39,7 @@ public class Service {
         this.totalCost = totalCost;
     }
 
-    public void addServiceProvider(ServiceProvider s){
+	public void addServiceProvider(ServiceProvider s){
         SPs.add(s);
     }
     public ServiceProvider getServiceProviderByNumber(long n){
@@ -50,5 +50,12 @@ public class Service {
         }
         return null;
     }
+    public boolean isAcceptingCash() {
+		return acceptCash;
+	}
+
+	public void setAcceptCash(boolean acceptCash) {
+		this.acceptCash = acceptCash;
+	}
 
 }

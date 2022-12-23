@@ -4,7 +4,7 @@ import Services.Service;
 
 public abstract class  Discount  extends Service {
     float discountAmount;
-    Service s = new Service();
+    Service s;
     public void setService(Service ss){
         this.s = ss ;
     }
@@ -20,7 +20,7 @@ public abstract class  Discount  extends Service {
     }
 
     @Override
-    public String getDescription() {
-        return s.getDescription()+" with discount"+discountAmount;
+    public String getName() {
+        return s.getName()+" with discount"+discountAmount;
     }
 }
