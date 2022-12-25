@@ -223,10 +223,10 @@ public class MainController {
 	
 	
 	@GetMapping("/admin/ShowUserPayment/{username}") //nothing
-	List<payment> ShowUserPayment(@PathVariable("username") String username)
+	userInfo ShowUserPayment(@PathVariable("username") String username)
 	{
 		userInfo userinfo=usersdata.getByUserName(username);
-		return userinfo.getCredits().getHistoryPayments();
+		return userinfo;
 	}
 	
 	
@@ -234,7 +234,7 @@ public class MainController {
 	@GetMapping("/admin/ShowUserRefundList/{username}")   //
 	List<Refund> ShowUserRefundList(@PathVariable("username") String username)
 	{
-		userInfo userinfo=usersdata.getByUserName(username);
+		userInfo userinfo = usersdata.getByUserName(username);
 		return userinfo.getCredits().getHistoryRefunds();
 	}
 	

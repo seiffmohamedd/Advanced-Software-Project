@@ -40,7 +40,7 @@ Content-Type: application/json
 
 {
     "username": "Orcawy",
-    "amount"  : "100"
+    "amount"  : "200"
 }
 
 ###
@@ -55,18 +55,6 @@ Content-Type: application/json
     "servicename" : "Donations",
     "paymentMethod" : "cash"
 }
-###
-POST  http://localhost:8080/admin/addDiscount HTTP/1.1
-Content-Type: application/json
-
-{
-    "servicename": "Mobile recharge",
-    "discountPercentage": 10
-    
-}
-###
-
-GET http://localhost:8080/user/checkDiscounts?serviceName=Mobile recharge HTTP/1.1
 
 ###
 POST  http://localhost:8080/User/RequestRefund HTTP/1.1
@@ -80,11 +68,27 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/admin/ShowUserPayment?username=Orcawy HTTP/1.1
+GET http://localhost:8080/admin/ShowUserPayment/Orcawy HTTP/1.1
 
 ###
-GET http://localhost:8080/admin/ShowUserRefundList?username=Orcawy HTTP/1.1
+GET http://localhost:8080/admin/ShowUserRefundList/Orcawy HTTP/1.1
 
 ###
-GET http://localhost:8080/admin/ShowUserWallet?username=Orcawy HTTP/1.1
+GET http://localhost:8080/admin/ShowUserWallet/Orcawy HTTP/1.1
 
+
+
+
+
+###
+POST  http://localhost:8080/admin/addDiscount HTTP/1.1
+Content-Type: application/json
+
+{
+    "servicename": "Mobile recharge",
+    "discountPercentage": 10
+    
+}
+###
+
+GET http://localhost:8080/user/checkDiscounts?serviceName=Mobile recharge HTTP/1.1
