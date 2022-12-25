@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import Admination.*;
 import Form.*;
 import Form.Fields.*;
+import Payment.payment;
 import Services.*;
 import UsersData.*;
 import User.*;
@@ -35,7 +36,7 @@ public class MainController {
 	Service internetPaymnet;
 	Service landLine ;
 	Service Donation ;
-	
+	int payID = 0;
 	// one search class to search through services
 	Search searcher = new Search();
 	
@@ -50,6 +51,7 @@ public class MainController {
 		searcher.addService(internetPaymnet);
 		searcher.addService(landLine);
 		searcher.addService(Donation);
+		Donation.setAcceptCash(true);
 	}
 	
 	
@@ -136,6 +138,10 @@ public class MainController {
 		String password = json.get("password").toString();
 		double totalCost =  Integer.parseInt(json.get("totalcost").toString());
 		Authentication signIn = new SignIn(usersdata,email,password);
+		String paymentMethod = "";
+		if(json.containsKey("paymentMethod")){
+			paymentMethod = json.get("paymentMethod").toString();
+		}
 		
 		if(signIn.Join()){
             userInfo user = usersdata.GetUserByUserEmail(email);
@@ -145,9 +151,14 @@ public class MainController {
             Service service = serviceFactory.createService(serviceName);
             for(ServiceProvider sp : service.getSPs()) {
             	if(sp.getNumber() == spNumber) {
-            		
+            		if(paymentMethod == "cash" && service.isAcceptingCash()){
+            			payment cashPayment = new Cash(payID,service);
+            		}
+            		payID++;
+            		return sp.getF().display();
             	}
             }
+            return "Invalid service provider";
         }
         else {
             return "Wrong password or email";

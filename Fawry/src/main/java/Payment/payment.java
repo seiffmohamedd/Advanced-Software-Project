@@ -7,7 +7,9 @@ import java.util.Scanner;
 
 public abstract class payment {
     int paymentNumber=0;
-    Service s = new Service();
+    Service s;
+    
+    
 //    public boolean pay(Service s , creditInfo  C){
 //        Scanner input = new Scanner(System.in);
 //        String choice;
@@ -50,7 +52,14 @@ public abstract class payment {
 //
 //    }
 
-    public void setS(Service s) {
+    public payment(int paymentNumber, Service s) {
+		this.paymentNumber = paymentNumber;
+		this.s = s;
+	}
+    
+    public payment() {}
+    
+	public void setS(Service s) {
         this.s = s;
     }
     public Service getS() {

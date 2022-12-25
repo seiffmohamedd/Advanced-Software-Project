@@ -6,19 +6,19 @@ import java.util.List;
 
 import Form.Fields.*;
 public class form implements FormComponent{
-    List <FormComponent> componentList = new ArrayList<>();
+    List <Field> componentList = new ArrayList<>();
     String name ;
     public void setName(String n){
         name = n;
     }
-    public void addComponent(FormComponent C){
+    public void addComponent(Field C){
         componentList.add(C);
     }
     public String display(){
-        System.out.println(name);
-        for (FormComponent C : componentList){
-            C.display();
-        }
-        System.out.println("----------------");
+        String responseMsg = "";
+    	for (Field C : componentList){
+    		responseMsg+= C.display() + " ";
+    	}
+    	return responseMsg;
     }
 }

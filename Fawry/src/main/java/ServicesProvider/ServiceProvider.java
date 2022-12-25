@@ -12,7 +12,7 @@ public class ServiceProvider {
 	String name ;
     public Service s ;
     long number ;
-    FormComponent f ;
+    form f;
     
     public ServiceProvider(String name, Service s, long number, form f) {
 		this.name = name;
@@ -43,4 +43,14 @@ public class ServiceProvider {
     public long getNumber() {
         return number;
     }
+
+	public form getF() {
+		return f;
+	}
+
+	public void setF(form f) {
+		this.f = f;
+	}
+    
+    
 }

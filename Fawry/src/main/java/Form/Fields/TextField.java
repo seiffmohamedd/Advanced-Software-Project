@@ -16,8 +16,7 @@ public class TextField extends Field {
         content=n.nextLine();
     }
     public String display(){
-        System.out.println(name);
-        System.out.println(content);
+        return Title;
     }
 
     public String getContent() {
