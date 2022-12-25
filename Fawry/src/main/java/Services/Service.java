@@ -66,4 +66,10 @@ public class Service {
 	public void setSPs(List<ServiceProvider> sPs) {
 		SPs = sPs;
 	}
+	//For testing & debug only
+//	public void display() {
+//		for(ServiceProvider sp : SPs) {
+//			System.out.print(sp.);
+//		}
+//	}
 }

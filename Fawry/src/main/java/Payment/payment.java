@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public abstract class payment {
     int paymentNumber=0;
-    Service s;
+    Service s = new Service();
     
     
 //    public boolean pay(Service s , creditInfo  C){
@@ -52,13 +52,16 @@ public abstract class payment {
 //
 //    }
 
-    public payment(int paymentNumber, Service s) {
-		this.paymentNumber = paymentNumber;
-		this.s = s;
-	}
+
     
     public payment() {}
     
+	public payment(int paymentNumber, Service s) {
+	super();
+	this.paymentNumber = paymentNumber;
+	this.s = s;
+}
+
 	public void setS(Service s) {
         this.s = s;
     }

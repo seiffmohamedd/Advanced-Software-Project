@@ -17,7 +17,7 @@ public class form implements FormComponent{
     public String display(){
         String responseMsg = "";
     	for (Field C : componentList){
-    		responseMsg+= C.display() + " ";
+    		responseMsg+= C.display() + ", ";
     	}
     	return responseMsg;
     }

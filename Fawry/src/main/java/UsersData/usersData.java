@@ -59,7 +59,7 @@ public class usersData {
     }
     public userInfo GetUserByUserEmail(String E){
         for (userInfo userInfo : userInfos){
-            if(userInfo.getUserName().equals(E)){
+            if(userInfo.getEmail().equals(E)){
                 return userInfo;
             }
         }
