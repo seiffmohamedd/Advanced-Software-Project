@@ -16,13 +16,14 @@ public class creditInfo {
         return wallet;
     }
 
-    public void addPayments(payment P) {
+    public String addPayments(payment P) {
         for (payment PP : historyPayments){
             if(PP.getPaymentNumber()== P.getPaymentNumber()){
                 P.setPaymentNumber(P.getPaymentNumber()+1);
             }
             historyPayments.add(P);
         }
+        return "Payment Done Successfully!";
     }
 
     public payment getPayments(int PN) {

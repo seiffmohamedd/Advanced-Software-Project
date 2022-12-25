@@ -11,7 +11,7 @@ public class Service {
     long number;
     private boolean acceptCash;
     
-    List <ServiceProvider> SPs=new ArrayList<>();
+    private List <ServiceProvider> SPs=new ArrayList<>();
     
     public Service(){
     	acceptCash = false;
@@ -59,4 +59,11 @@ public class Service {
 		this.acceptCash = acceptCash;
 	}
 
+	public List<ServiceProvider> getSPs() {
+		return SPs;
+	}
+
+	public void setSPs(List<ServiceProvider> sPs) {
+		SPs = sPs;
+	}
 }

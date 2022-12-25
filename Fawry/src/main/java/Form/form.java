@@ -14,7 +14,7 @@ public class form implements FormComponent{
     public void addComponent(FormComponent C){
         componentList.add(C);
     }
-    public void display(){
+    public String display(){
         System.out.println(name);
         for (FormComponent C : componentList){
             C.display();

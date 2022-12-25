@@ -130,5 +130,28 @@ public class MainController {
 		return user.getCredits().chargeWallet(amount);
 	}
 	
+	@PostMapping("/payservice")
+	String payForService(@RequestBody Map <String,String> json) {
+		String email = json.get("email").toString();
+		String password = json.get("password").toString();
+		double totalCost =  Integer.parseInt(json.get("totalcost").toString());
+		Authentication signIn = new SignIn(usersdata,email,password);
+		
+		if(signIn.Join()){
+            userInfo user = usersdata.GetUserByUserEmail(email);
+            long spNumber =  Long.parseLong(json.get("spnumber").toString());
+            String serviceName = json.get("servicename").toString();
+            ServiceFactory serviceFactory = new ServiceFactory();
+            Service service = serviceFactory.createService(serviceName);
+            for(ServiceProvider sp : service.getSPs()) {
+            	if(sp.getNumber() == spNumber) {
+            		
+            	}
+            }
+        }
+        else {
+            return "Wrong password or email";
+        }
+	}
 }
 
