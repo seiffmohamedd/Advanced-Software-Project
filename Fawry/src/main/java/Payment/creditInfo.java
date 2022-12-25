@@ -28,10 +28,17 @@ public class creditInfo {
 //            
 //    
 //        }
+    	
         historyPayments.add(P);
+        
+        for(payment pay : historyPayments) {
+        	System.out.println("Payment ID: " + pay.getPaymentNumber());
+        }
+        
         if(P instanceof Wallet)
         {
         	wall.add(P);
+        	System.out.println("Wallet Payment!");
         }
 
         return "Payment Done Successfully!";
@@ -113,6 +120,8 @@ public class creditInfo {
     }
     public String chargeWallet(int amount){
     	wallet.setBalance(wallet.getBalance()+amount);
+    	payment walletrecharge = wallet;
+    	wall.add(walletrecharge);
     	return "amount added successfully";
     }
     public void printCreditsInfo(){
@@ -124,6 +133,11 @@ public class creditInfo {
     public void printPayment(){
         for (payment p : historyPayments){
             System.out.println(p.getPaymentNumber());
+        }
+    }
+    public void printhistoryRefunds(){
+        for (Refund p : historyRefunds){
+            System.out.println(p.refundInfo());
         }
     }
 }

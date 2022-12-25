@@ -10,8 +10,7 @@ public class Wallet extends payment{
 		super(paymentNumber, s);
 	}
     
-    public Wallet() {
-	}
+    public Wallet() {}
     
 	public boolean validAmount(){
         if(s.getTotalCost()>balance){

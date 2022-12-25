@@ -29,7 +29,8 @@ public class Refund {
     public void setUserInfo(userInfo c) {
         this.userinfo = c;
     }
-    public void refundInfo(){
-        System.out.println(paymentID + refundStatus );
+    public String refundInfo(){
+        String s  = String.valueOf(paymentID) + refundStatus;
+        return s;
     }
 }

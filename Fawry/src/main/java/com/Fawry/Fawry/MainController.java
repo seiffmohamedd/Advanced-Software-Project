@@ -131,9 +131,9 @@ public class MainController {
 		userInfo user = usersdata.getByUserName(userName);
 
 		int amount = Integer.parseInt(json.get("amount").toString());
-
-		user.getCredits().chargeWallet(amount);
-
+		
+//		System.out.println(amount);
+		
 		return user.getCredits().chargeWallet(amount);
 	}
 
@@ -199,7 +199,7 @@ public class MainController {
 	    
 	    	return DiscountLists.get(serviceName);
 	    	
-	    	
+
 	    }
 	
 	@PostMapping("/User/RequestRefund")
@@ -222,11 +222,11 @@ public class MainController {
 	}
 	
 	
-	@GetMapping("/admin/ShowUserPayment/{username}") //nothing
-	userInfo ShowUserPayment(@PathVariable("username") String username)
+	@GetMapping("/admin/ShowUserPayment/{username}") 
+	List<payment> ShowUserPayment(@PathVariable("username") String username)
 	{
-		userInfo userinfo=usersdata.getByUserName(username);
-		return userinfo;
+		userInfo userinfo = usersdata.getByUserName(username);
+		return userinfo.getCredits().getHistoryPayments();
 	}
 	
 	

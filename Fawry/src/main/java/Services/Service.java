@@ -41,6 +41,9 @@ public class Service {
 
 	public String addServiceProvider(ServiceProvider s){
         SPs.add(s);
+        for(ServiceProvider sp : SPs) {
+        	System.out.println(sp.getName());
+        }
         return "Service Provider added successfully";
     }
     public ServiceProvider getServiceProviderByNumber(long n){

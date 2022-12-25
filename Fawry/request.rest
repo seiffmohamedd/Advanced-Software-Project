@@ -1,5 +1,4 @@
 
-GET http://localhost:8080/love HTTP/1.1
 
 ###
 
@@ -53,7 +52,7 @@ Content-Type: application/json
     "totalcost" : "200.0",
     "spnumber" : "961093",
     "servicename" : "Donations",
-    "paymentMethod" : "cash"
+    "paymentMethod" : "wallet"
 }
 
 ###
@@ -63,7 +62,7 @@ Content-Type: application/json
 {
     "email": "orcawy@gmail.com",
     "password": "20201114",
-    "payid": "0"
+    "payid": "1"
     
 }
 
