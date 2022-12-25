@@ -39,7 +39,8 @@ public class MainController {
 	int payID = 0;
 	// one search class to search through services
 	Search searcher = new Search();
-
+	Admin admin = new Admin();
+	
 	// this function will act like the Main function in normal console application
 	void intiateMain() {
 
@@ -171,6 +172,17 @@ public class MainController {
             }
         }
         return "Wrong password or email";
+	}
+	
+	@PostMapping("/requestrefund")
+	String requestRefund(@RequestBody Map<String,String> JSON){
+		String email = JSON.get("email").toString();
+		String password = JSON.get("password").toString();
+		Authentication signIn = new SignIn(usersdata,email,password);
+		if(JSON.containsKey("paymentMethod")){
+			paymentMethod = JSON.get("paymentMethod").toString();
+		}
+		return "ehda shwia y eclipse 3alia";
 	}
 		
 	
