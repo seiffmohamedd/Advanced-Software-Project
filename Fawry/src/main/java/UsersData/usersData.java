@@ -7,6 +7,7 @@ import java.util.List;
 
 public class usersData {
     List<userInfo> userInfos =new ArrayList<userInfo>();
+    
     public void addUser(userInfo U){
         userInfos.add(U);
     }

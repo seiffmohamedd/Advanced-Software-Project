@@ -2,12 +2,16 @@ package Payment;
 
 import java.util.ArrayList;
 import java.util.List;
+import Admination.*;
+import User.*;
+
 
 public class creditInfo {
     List<payment> historyPayments = new ArrayList();
     Wallet wallet = new Wallet();
+    List<payment> wall = new ArrayList<>();
     List<CreditCard> credits = new ArrayList();
-
+    List<Refund> historyRefunds = new ArrayList<>();
 
     public void setWallet(Wallet wallet) {
         this.wallet = wallet;
@@ -17,25 +21,67 @@ public class creditInfo {
     }
 
     public String addPayments(payment P) {
-        for (payment PP : historyPayments){
-            if(PP.getPaymentNumber()== P.getPaymentNumber()){
-                P.setPaymentNumber(P.getPaymentNumber()+1);
-            }
-            historyPayments.add(P);
+//        for (payment PP : historyPayments){
+//            if(PP.getPaymentNumber()== P.getPaymentNumber()){
+//                P.setPaymentNumber(P.getPaymentNumber()+1);
+//            }
+//            
+//    
+//        }
+        historyPayments.add(P);
+        if(P instanceof Wallet)
+        {
+        	wall.add(P);
         }
+
         return "Payment Done Successfully!";
     }
-
-    public payment getPayments(int PN) {
+   
+    
+    
+	public List<payment> getWall() {
+		return wall;
+	}
+	public void setWall(List<payment> wall) {
+		this.wall = wall;
+	}
+	public boolean getPayments(int PN) {
         for(payment P : historyPayments){
             if(P.getPaymentNumber()==PN){
-                return P;
+                return true;
             }
         }
-        return null;
+        return false;
+    }
+    
+//    public payment listPayments()
+//    {
+//    	return historyPayments;
+//    }
+    
+    public String addRefund(int payid, userInfo user) {
+    	
+    	Refund refund = new Refund(user, payid,"pending");  	
+    	historyRefunds.add(refund);
+    	return "Refund Request has been recorded";
     }
 
-    public boolean searchByCreditNumber(long n){
+    public List<payment> getHistoryPayments() {
+		return historyPayments;
+	}
+    
+	public void setHistoryPayments(List<payment> historyPayments) {
+		this.historyPayments = historyPayments;
+	}
+	
+	public List<Refund> getHistoryRefunds() {
+		return historyRefunds;
+	}
+	
+	public void setHistoryRefunds(List<Refund> historyRefunds) {
+		this.historyRefunds = historyRefunds;
+	}
+	public boolean searchByCreditNumber(long n){
         for (CreditCard C : credits){
             if(C.getCreditNumber()== n){
                 return true;
