@@ -8,10 +8,11 @@ public class Wallet extends payment{
     
     public Wallet(int paymentNumber, Service s) {
 		super(paymentNumber, s);
-		// TODO Auto-generated constructor stub
 	}
+    
     public Wallet() {
 	}
+    
 	public boolean validAmount(){
         if(s.getTotalCost()>balance){
             return false;

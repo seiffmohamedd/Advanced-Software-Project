@@ -3,12 +3,15 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import Admination.*;
@@ -37,9 +40,10 @@ public class MainController {
 	Service landLine ;
 	Service Donation ;
 	int payID = 0;
+	Admin admin = new Admin(); 
 	// one search class to search through services
 	Search searcher = new Search();
-	Admin admin = new Admin();
+
 	
 	// this function will act like the Main function in normal console application
 	void intiateMain() {
@@ -173,18 +177,82 @@ public class MainController {
         }
         return "Wrong password or email";
 	}
+
+	 Map<String, List<Integer>> DiscountLists = new HashMap<>(Map.of("Mobile recharge", new ArrayList<>(), "Internet Payment", new ArrayList<>(), "Landline", new ArrayList<>(),"Donations",new ArrayList<>()));
+	  
+		@PostMapping("/admin/addDiscount")
+	    String addDiscounts(@RequestBody  AddDiscountReqBody a)
+	    {        
+			List<Integer> old_discount = DiscountLists.get(a.servicename());
+			
+			old_discount.add(a.discountPercentage());
+			
+			DiscountLists.replace(a.servicename(),old_discount);
+			
+			
+	        return "Discount added succefully";
+	    }
+
+	    @GetMapping("/user/checkDiscounts")
+	    List<Integer> getDiscounts(@RequestParam String serviceName)
+	    {
+	    
+	    	return DiscountLists.get(serviceName);
+	    	
+	    	
+	    }
 	
-	@PostMapping("/requestrefund")
-	String requestRefund(@RequestBody Map<String,String> JSON){
+	@PostMapping("/User/RequestRefund")
+	String RequestRefund(@RequestBody Map <String, String> JSON)
+	{
 		String email = JSON.get("email").toString();
 		String password = JSON.get("password").toString();
 		Authentication signIn = new SignIn(usersdata,email,password);
-		if(JSON.containsKey("paymentMethod")){
-			paymentMethod = JSON.get("paymentMethod").toString();
-		}
-		return "ehda shwia y eclipse 3alia";
-	}
 		
+		if(signIn.Join()){
+			int paymentID = Integer.parseInt(JSON.get("payid").toString());
+			userInfo userinfo=usersdata.GetUserByUserEmail(email);
+			creditInfo cred=userinfo.getCredits();
+			admin.addRefund(paymentID, userinfo);
+		
+			return cred.addRefund(paymentID, userinfo);
+		}
+		
+		else return "Wrong password or email";
+	}
+	
+	
+	@GetMapping("/admin/ShowUserPayment/{username}") //nothing
+	List<payment> ShowUserPayment(@PathVariable("username") String username)
+	{
+		userInfo userinfo=usersdata.getByUserName(username);
+		return userinfo.getCredits().getHistoryPayments();
+	}
+	
+	
+	
+	@GetMapping("/admin/ShowUserRefundList/{username}")   //
+	List<Refund> ShowUserRefundList(@PathVariable("username") String username)
+	{
+		userInfo userinfo=usersdata.getByUserName(username);
+		return userinfo.getCredits().getHistoryRefunds();
+	}
+	
+	
+	
+	@GetMapping("/admin/ShowUserWallet/{username}")
+	List<payment> ShowUserWallet(@PathVariable("username") String username)
+	{
+		userInfo userinfo=usersdata.getByUserName(username);
+		return userinfo.getCredits().getWall();
+	
+	}
+	
+	
+	
+	
+	
+	
 	
 }
 
