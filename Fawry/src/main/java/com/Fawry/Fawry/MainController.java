@@ -37,8 +37,8 @@ public class MainController {
 	// we have 4 initial services  
 	Service mobileRecharge;
 	Service internetPaymnet;
-	Service landLine ;
-	Service Donation ;
+	Service landLine;
+	Service Donation;
 	int payID = 0;
 	Admin admin = new Admin(); 
 	// one search class to search through services
@@ -56,7 +56,6 @@ public class MainController {
 		searcher.addService(internetPaymnet);
 		searcher.addService(landLine);
 		searcher.addService(Donation);
-		Donation.setAcceptCash(true);
 	}
 
 
@@ -120,6 +119,7 @@ public class MainController {
 			sForm.addComponent(field);
 		}
 		ServiceProvider serviceProvider = spFactory.createServiceProvider(name,service,number,sForm);
+		System.out.println(serviceProvider.getName() + " " + serviceProvider.getNumber() + " " + serviceProvider.getServiceName() + " " + serviceProvider.getServiceAcceptance());
 		return service.addServiceProvider(serviceProvider);
 	}
 
@@ -178,6 +178,41 @@ public class MainController {
         return "Wrong password or email";
 	}
 
+
+	
+	
+	
+	
+	@GetMapping("/admin/ShowUserPayment/{username}") 
+	List<String> ShowUserPayment(@PathVariable("username") String username)
+	{
+		List <String> paymentsDefinition = new ArrayList<String>();
+		userInfo userinfo = usersdata.getByUserName(username);
+		for(payment p : userinfo.getCredits().getHistoryPayments() ) {
+			paymentsDefinition.add(p.display());
+		}
+		return paymentsDefinition;
+	}
+	
+	
+	
+	@GetMapping("/admin/ShowUserRefundList/{username}")   //
+	List<Refund> ShowUserRefundList(@PathVariable("username") String username)
+	{
+		userInfo userinfo = usersdata.getByUserName(username);
+		return userinfo.getCredits().getHistoryRefunds();
+	}
+	
+	
+	
+	@GetMapping("/admin/ShowUserWallet/{username}")
+	List<payment> ShowUserWallet(@PathVariable("username") String username)
+	{
+		userInfo userinfo=usersdata.getByUserName(username);
+		return userinfo.getCredits().getWall();
+	
+	}
+	
 	 Map<String, List<Integer>> DiscountLists = new HashMap<>(Map.of("Mobile recharge", new ArrayList<>(), "Internet Payment", new ArrayList<>(), "Landline", new ArrayList<>(),"Donations",new ArrayList<>()));
 	  
 		@PostMapping("/admin/addDiscount")
@@ -201,55 +236,25 @@ public class MainController {
 	    	
 
 	    }
-	
-	@PostMapping("/User/RequestRefund")
-	String RequestRefund(@RequestBody Map <String, String> JSON)
-	{
-		String email = JSON.get("email").toString();
-		String password = JSON.get("password").toString();
-		Authentication signIn = new SignIn(usersdata,email,password);
-		
-		if(signIn.Join()){
-			int paymentID = Integer.parseInt(JSON.get("payid").toString());
-			userInfo userinfo=usersdata.GetUserByUserEmail(email);
-			creditInfo cred=userinfo.getCredits();
-			admin.addRefund(paymentID, userinfo);
-		
-			return cred.addRefund(paymentID, userinfo);
+	    
+	    @PostMapping("/User/RequestRefund")
+		String RequestRefund(@RequestBody Map <String, String> JSON)
+		{
+			String email = JSON.get("email").toString();
+			String password = JSON.get("password").toString();
+			Authentication signIn = new SignIn(usersdata,email,password);
+			
+			if(signIn.Join()){
+				int paymentID = Integer.parseInt(JSON.get("payid").toString());
+				userInfo userinfo=usersdata.GetUserByUserEmail(email);
+				creditInfo cred=userinfo.getCredits();
+				admin.addRefund(paymentID, userinfo);
+			
+				return cred.addRefund(paymentID, userinfo);
+			}
+			
+			else return "Wrong password or email";
 		}
-		
-		else return "Wrong password or email";
-	}
-	
-	
-	@GetMapping("/admin/ShowUserPayment/{username}") 
-	List<payment> ShowUserPayment(@PathVariable("username") String username)
-	{
-		userInfo userinfo = usersdata.getByUserName(username);
-		return userinfo.getCredits().getHistoryPayments();
-	}
-	
-	
-	
-	@GetMapping("/admin/ShowUserRefundList/{username}")   //
-	List<Refund> ShowUserRefundList(@PathVariable("username") String username)
-	{
-		userInfo userinfo = usersdata.getByUserName(username);
-		return userinfo.getCredits().getHistoryRefunds();
-	}
-	
-	
-	
-	@GetMapping("/admin/ShowUserWallet/{username}")
-	List<payment> ShowUserWallet(@PathVariable("username") String username)
-	{
-		userInfo userinfo=usersdata.getByUserName(username);
-		return userinfo.getCredits().getWall();
-	
-	}
-	
-	
-	
 	
 	
 	

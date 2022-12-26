@@ -25,7 +25,7 @@ Content-Type: application/json
 
 {
     "name": "Vodafone Cash",
-    "serviceName": "Donations",
+    "serviceName": "Landline",
     "number" : "961093",
     "formComponentsNumber": "2",
     "formComponent0" : "0Mobile Number",
@@ -52,7 +52,7 @@ Content-Type: application/json
     "totalcost" : "200.0",
     "spnumber" : "961093",
     "servicename" : "Donations",
-    "paymentMethod" : "wallet"
+    "paymentMethod" : "cash"
 }
 
 ###
@@ -75,6 +75,8 @@ GET http://localhost:8080/admin/ShowUserRefundList/Orcawy HTTP/1.1
 ###
 GET http://localhost:8080/admin/ShowUserWallet/Orcawy HTTP/1.1
 
+###
+GET http://localhost:8080/search/Mobile HTTP/1.1
 
 
 

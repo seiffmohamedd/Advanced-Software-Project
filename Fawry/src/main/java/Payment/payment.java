@@ -1,7 +1,7 @@
 package Payment;
 
-import Services.Service;
-import ServicesProvider.ServiceProvider;
+import Services.*;
+import ServicesProvider.*;
 
 import java.util.Scanner;
 
@@ -76,4 +76,7 @@ public abstract class payment {
     public int getPaymentNumber() {
         return paymentNumber;
     }
+    
+    public String display(){return "Normal Payment";}
+    
 }

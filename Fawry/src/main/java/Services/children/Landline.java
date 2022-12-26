@@ -6,7 +6,11 @@ import Services.observer;
 public class Landline extends Service implements observer {
 	private static Landline instance;
 
-    private Landline(){}
+    private Landline(){
+    	this.name = "Landline";
+    	this.acceptCash = false;
+    	
+    }
 
     public static Landline getInstance() {
         if (instance == null) {
@@ -16,5 +20,6 @@ public class Landline extends Service implements observer {
     }
 
 	public void update(){}
+	
     
 }

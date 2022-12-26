@@ -10,7 +10,7 @@ public class ServiceProvider {
 	
     
 	String name ;
-    public Service s ;
+    public Service s;
     long number ;
     form f;
     
@@ -52,5 +52,11 @@ public class ServiceProvider {
 		this.f = f;
 	}
     
+	public String getServiceName() {
+		return s.getName();
+	}
+	public String getServiceAcceptance() {
+		return s.displayAcceptance();
+	}
     
 }

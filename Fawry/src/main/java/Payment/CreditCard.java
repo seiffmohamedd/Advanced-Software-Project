@@ -41,4 +41,11 @@ public class CreditCard extends payment{
         }
         return true;
     }
+    @Override
+    public String display() {
+    	String st = "";
+    	st += "Payment method: Credit Card" +"\n"+"Payment Number: " + String.valueOf(this.paymentNumber)
+    	+"\n"+ "Service Name: " + this.s.getName();
+    	return st; 
+    }
 }

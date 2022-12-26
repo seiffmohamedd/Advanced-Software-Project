@@ -3,6 +3,9 @@ package Services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class Search {
 	List<Service> serviceList = new ArrayList <Service>();
 	
@@ -14,14 +17,15 @@ public class Search {
     
 
 	public List<Service> searchByName(String searchedService){
-        
-		List<Service> serviceList2 = new ArrayList();
-        
+    
+		List<Service> serviceList2 = new ArrayList<Service>();
+		serviceList2.clear();
 		for (Service sss : serviceList){
             if(sss.getName().contains(searchedService)){
-                serviceList2.add(sss);
+            	serviceList2.add(sss);
             }
         }
+		serviceList.clear();
         return serviceList2;
     }
 
