@@ -31,13 +31,17 @@ public class creditInfo {
     	
         historyPayments.add(P);
         
-        for(payment pay : historyPayments) {
-        	System.out.println("Payment ID: " + pay.getPaymentNumber());
-        }
+//        for(payment pay : historyPayments) {
+//        	System.out.println("Payment ID: " + pay.getPaymentNumber());
+//        }
         
         if(P instanceof Wallet)
         {
         	wall.add(P);
+        	
+        	for(payment pay : wall) {
+            	System.out.println("Payment ID: " + pay.getPaymentNumber());
+            }
         	System.out.println("Wallet Payment!");
         }
 

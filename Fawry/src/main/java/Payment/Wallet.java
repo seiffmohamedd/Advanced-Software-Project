@@ -31,9 +31,16 @@ public class Wallet extends payment{
     }
     @Override
     public String display() {
-    	String st = "";
-    	st += "Payment method: Wallet"+"\n" + "Payment Number: " + String.valueOf(this.paymentNumber)
-    	+"\n"+ "Service Name: " + this.s.getName();
-    	return st; 
+    	String response = "";
+    	response += "Payment Number: " + String.valueOf(this.paymentNumber) + " Payment Category: ";
+    	if(this.s == null) {
+    		response += "Recharge Wallet ";
+    		response += "Balance: " + balance;
+    	}
+    	else {
+    		response += s.getName() + " ";
+    	}
+    	
+    	return response;
     }
 }

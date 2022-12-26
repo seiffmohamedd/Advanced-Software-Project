@@ -219,10 +219,16 @@ public class MainController {
 	
 	
 	@GetMapping("/admin/ShowUserWallet/{username}")
-	List<payment> ShowUserWallet(@PathVariable("username") String username)
+	List<String> ShowUserWallet(@PathVariable("username") String username)
 	{
-		userInfo userinfo=usersdata.getByUserName(username);
-		return userinfo.getCredits().getWall();
+		List <String> refundsDefinition = new ArrayList<String>();
+		userInfo userinfo = usersdata.getByUserName(username);
+		
+		for(payment wall : userinfo.getCredits().getWall()) {
+			refundsDefinition.add(wall.display());
+		}
+		
+		return refundsDefinition;
 	
 	}
 	
