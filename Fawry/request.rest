@@ -102,7 +102,7 @@ Content-Type: application/json
 {
     "email": "seif@gmail.com",
     "password"  : "20200239",
-    "totalcost" : "200.0",
+    "totalcost" : "300",
     "spnumber" : "961093",
     "servicename" : "Mobile recharge",
     "paymentMethod" : "cash"
@@ -113,9 +113,9 @@ POST  http://localhost:8080/payservice HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "orcawy@gmail.com",
-    "password"  : "20201114",
-    "totalcost" : "200.0",
+    "email": "seif@gmail.com",
+    "password"  : "20200239",
+    "totalcost" : "100",
     "spnumber" : "902",
     "servicename" : "Donations",
     "paymentMethod" : "wallet"
@@ -165,6 +165,9 @@ GET http://localhost:8080/admin/ShowUserRefundList/Orcawy HTTP/1.1
 
 ###
 GET http://localhost:8080/admin/ShowUserWallet/Orcawy HTTP/1.1
+
+###
+GET http://localhost:8080/admin/ShowUserWallet/seif HTTP/1.1
 
 ###
 GET http://localhost:8080/search/Mobile HTTP/1.1

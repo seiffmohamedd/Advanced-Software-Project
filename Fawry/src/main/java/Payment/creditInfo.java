@@ -128,7 +128,10 @@ public class creditInfo {
     public String chargeWallet(int paymentID,int amount){
     	int newBalance = wallet.getBalance()+amount;
     	payment walletrecharge = new Wallet(paymentID,newBalance);
+    	Wallet wal = new Wallet(paymentID,newBalance);
     	wall.add(walletrecharge);
+    	wallet=wal;
+    	
     	return "amount added successfully";
     }
     public void printCreditsInfo(){

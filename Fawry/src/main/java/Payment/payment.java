@@ -61,7 +61,9 @@ public abstract class payment {
 	this.paymentNumber = paymentNumber;
 	this.s = s;
 	}
-	
+	public boolean validAmount(int totalCost) {
+		return false;
+	}
 	public payment(int paymentNumber) {
 		this.paymentNumber = paymentNumber;
 	}

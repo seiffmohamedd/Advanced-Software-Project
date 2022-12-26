@@ -153,6 +153,7 @@ public class MainController {
             userInfo user = usersdata.GetUserByUserEmail(email);
             long spNumber =  Long.parseLong(json.get("spnumber").toString());
             String serviceName = json.get("servicename").toString();
+            int totalCost =  Integer.parseInt(json.get("totalcost").toString());
             ServiceFactory serviceFactory = new ServiceFactory();
             Service service = serviceFactory.createService(serviceName);
             boolean la2eeto = false;
@@ -167,7 +168,17 @@ public class MainController {
             		}
             		else if (paymentMethod.equals("wallet")){
             			Wallet walletPayment = new Wallet(payID,service);
-            			user.getCredits().addPayments(walletPayment);
+            			
+            			if(user.getCredits().getWallet().validAmount(totalCost))
+            			{
+            				user.getCredits().addPayments(walletPayment);
+            				return "payment is done succesfully";
+            			
+            			}
+            			
+            			else {
+            				return "service cant be afforded";
+            			}
             		}
             		else{
             			CreditCard creditPayment = new CreditCard(payID,service);

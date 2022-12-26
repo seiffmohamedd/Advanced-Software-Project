@@ -17,11 +17,22 @@ public class Wallet extends payment{
     
     public Wallet() {}
     
-	public boolean validAmount(){
-        if(s.getTotalCost()>balance){
-            return false;
+    @Override
+	public boolean validAmount(int totalcost){
+       if(totalcost<=balance)
+       {
+    		balance-=totalcost;
+    		System.out.println(balance);
+    		
+        	return true;
+       }
+        else
+        {
+    		System.out.println(balance);
+
+        	return false;
         }
-        return true;
+     
     }
     public void setBalance(int balance) {
         this.balance = balance;
@@ -38,9 +49,10 @@ public class Wallet extends payment{
     		response += "Balance: " + balance;
     	}
     	else {
-    		response += s.getName() + " ";
+    		response += s.getName() + " " ;
+    		response += "Balance: " + balance;
     	}
-    	
+		
     	return response;
     }
 }
