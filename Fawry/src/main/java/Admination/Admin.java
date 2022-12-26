@@ -10,10 +10,13 @@ import User.userInfo;
 public class Admin {
     List<Refund> Refunds= new ArrayList();
     Discounter D ;
-    public void showRefundList(){
+    
+    public List<String> showRefundList(){
+    	List<String> refunds2= new ArrayList<>();
         for (Refund x : Refunds){
-            x.refundInfo();
+            refunds2.add(x.refundInfo());
         }
+        return refunds2;
     }
    public void addRefund(int payid, userInfo user) {
     	
@@ -23,10 +26,26 @@ public class Admin {
     		System.out.println(refund2.getUserinfo().getUserName() + " " + refund2.getPaymentID() + " " + refund2.getRefundStatus());
     	}
     }
-    public void acceptRefund(Refund r){
-        r.setRefundStatus("accepted");
+    public void acceptRefund(int payid,String username){
+    	for(int i=0 ; i< Refunds.size();i++)
+    	{
+    		if(payid == Refunds.get(i).getPaymentID() && username.equals(Refunds.get(i).getUserinfo().getUserName()))
+    		{
+    			Refunds.get(i).setRefundStatus("Accepted");
+    		}
+    		
+    	}
+//        r.setRefundStatus("accepted");
     }
-    public void rejectRefund(Refund r){
-        r.setRefundStatus("rejected");
+    public void rejectRefund(int payid,String username){
+    	for(int i=0 ; i< Refunds.size();i++)
+    	{
+    		if(payid == Refunds.get(i).getPaymentID() && username.equals(Refunds.get(i).getUserinfo().getUserName()))
+    		{
+    			Refunds.get(i).setRefundStatus("Rejected");
+    		}
+    		
+    	}
+//        r.setRefundStatus("rejected");
     }
 }

@@ -274,5 +274,31 @@ public class MainController {
 			
 			else return "Wrong password or email";
 		}
+	    
+	    @GetMapping("/admin/getRefundList")
+	    List<String> getRefundList()
+	    {
+	    	return admin.showRefundList();	    	
+	    }
+	    
+	    @PostMapping("/admin/acceptanceOfRefunds")
+	    String acceptanceOfRefunds(@RequestBody Map<String,String> JSON)
+	    {
+	    	int payID=Integer.parseInt(JSON.get("payid").toString());
+	    	String username=JSON.get("username").toString();
+	    	String response = JSON.get("response").toString();
+	    	if(response.equals("accepted"))
+	    	{
+	    		admin.acceptRefund(payID, username);
+	    		return "Refund Accepted";
+	    	}
+	    	
+	    	if(response.equals("rejected"))
+	    	{
+	    		admin.rejectRefund(payID, username);
+	    		return "Refund Refused";
+	    	}
+	    	return null;
+	    }
 }
 
