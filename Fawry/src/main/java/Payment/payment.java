@@ -60,8 +60,12 @@ public abstract class payment {
 	super();
 	this.paymentNumber = paymentNumber;
 	this.s = s;
-}
-
+	}
+	
+	public payment(int paymentNumber) {
+		this.paymentNumber = paymentNumber;
+	}
+	
 	public void setS(Service s) {
         this.s = s;
     }

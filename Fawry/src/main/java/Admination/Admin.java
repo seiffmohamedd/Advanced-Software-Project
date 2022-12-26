@@ -19,6 +19,9 @@ public class Admin {
     	
     	Refund refund = new Refund(user, payid,"pending");  	
     	Refunds.add(refund);
+    	for(Refund refund2 : Refunds) {
+    		System.out.println(refund2.getUserinfo().getUserName() + " " + refund2.getPaymentID() + " " + refund2.getRefundStatus());
+    	}
     }
     public void acceptRefund(Refund r){
         r.setRefundStatus("accepted");

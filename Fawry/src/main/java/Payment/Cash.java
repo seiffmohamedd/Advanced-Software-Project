@@ -14,8 +14,8 @@ public class Cash extends payment{
 	@Override
     public String display() {
     	String st = "";
-    	st += "Payment method: Cash" +"\n"+"Payment Number: " + String.valueOf(this.paymentNumber)
-    	+"\n"+ "Service Name: " + this.s.getName();
+    	st += "Payment method: Cash" +" "+"Payment Number: " + String.valueOf(this.paymentNumber)
+    	+" "+ "Service Name: " + this.s.getName();
     	return st; 
     }
 }

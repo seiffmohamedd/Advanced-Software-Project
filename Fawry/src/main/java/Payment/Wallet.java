@@ -10,6 +10,11 @@ public class Wallet extends payment{
 		super(paymentNumber, s);
 	}
     
+    public Wallet(int paymentNumber,int balance) {
+		super(paymentNumber);
+    	this.balance = balance;
+	}
+    
     public Wallet() {}
     
 	public boolean validAmount(){

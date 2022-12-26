@@ -70,6 +70,9 @@ public class creditInfo {
     	
     	Refund refund = new Refund(user, payid,"pending");  	
     	historyRefunds.add(refund);
+    	for(Refund r : historyRefunds) {
+    		System.out.println(r.getUserinfo().getUserName() + " " + r.getPaymentID() + " " + r.getRefundStatus());
+    	}
     	return "Refund Request has been recorded";
     }
 
@@ -118,9 +121,9 @@ public class creditInfo {
             System.out.println("the credit card already exist");
         }
     }
-    public String chargeWallet(int amount){
-    	wallet.setBalance(wallet.getBalance()+amount);
-    	payment walletrecharge = wallet;
+    public String chargeWallet(int paymentID,int amount){
+    	int newBalance = wallet.getBalance()+amount;
+    	payment walletrecharge = new Wallet(paymentID,newBalance);
     	wall.add(walletrecharge);
     	return "amount added successfully";
     }

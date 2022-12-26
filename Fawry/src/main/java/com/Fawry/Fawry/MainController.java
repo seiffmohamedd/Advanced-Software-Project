@@ -106,7 +106,9 @@ public class MainController {
 
 		String name = json.get("name").toString();
 		String serviceName = json.get("serviceName").toString();
-		Service service = serviceFactory.createService(serviceName);
+//		System.out.print(serviceName);
+//		Service service = serviceFactory.createService(serviceName);
+//		System.out.println(service.getName());
 		long number = Long.parseLong(json.get("number").toString());
 		int formComponentsNumber = Integer.parseInt(json.get("formComponentsNumber"));
 		form sForm = new form();
@@ -118,9 +120,9 @@ public class MainController {
 			Field field = fieldFactory.createField(fieldDetail.charAt(0),fieldDetail.substring(1));
 			sForm.addComponent(field);
 		}
-		ServiceProvider serviceProvider = spFactory.createServiceProvider(name,service,number,sForm);
+		ServiceProvider serviceProvider = spFactory.createServiceProvider(name,serviceFactory.createService(serviceName),number,sForm);
 		System.out.println(serviceProvider.getName() + " " + serviceProvider.getNumber() + " " + serviceProvider.getServiceName() + " " + serviceProvider.getServiceAcceptance());
-		return service.addServiceProvider(serviceProvider);
+		return serviceFactory.createService(serviceName).addServiceProvider(serviceProvider);
 	}
 
 	@PostMapping("/walletrecharge")
@@ -134,9 +136,9 @@ public class MainController {
 		
 //		System.out.println(amount);
 		
-		return user.getCredits().chargeWallet(amount);
+		return user.getCredits().chargeWallet(payID++,amount);
 	}
-
+	
 	@PostMapping("/payservice")
 	String payForService(@RequestBody Map <String,String> json) {
 		String email = json.get("email").toString();
@@ -153,16 +155,17 @@ public class MainController {
             String serviceName = json.get("servicename").toString();
             ServiceFactory serviceFactory = new ServiceFactory();
             Service service = serviceFactory.createService(serviceName);
+            boolean la2eeto = false;
             for(ServiceProvider sp : service.getSPs()){
             	if(sp.getNumber() == spNumber) {
-            		if(paymentMethod == "cash" && service.isAcceptingCash()){
+            		if(paymentMethod.equals("cash")  && service.isAcceptingCash()){
             			Cash cashPayment = new Cash(payID,service);
             			user.getCredits().addPayments(cashPayment);
             		}
-            		else if (paymentMethod == "cash" && !service.isAcceptingCash()) {
+            		else if (paymentMethod.equals("cash") && !service.isAcceptingCash()) {
             			return "service cannot accept cash";
             		}
-            		else if (paymentMethod == "wallet"){
+            		else if (paymentMethod.equals("wallet")){
             			Wallet walletPayment = new Wallet(payID,service);
             			user.getCredits().addPayments(walletPayment);
             		}
@@ -171,8 +174,12 @@ public class MainController {
             			user.getCredits().addPayments(creditPayment);
             		}
             		payID++;
+            		la2eeto = true;
             		return sp.getF().display();
             	}
+            }
+            if(!la2eeto) {
+            	return "Invalid Service Provider Number";
             }
         }
         return "Wrong password or email";
@@ -197,10 +204,16 @@ public class MainController {
 	
 	
 	@GetMapping("/admin/ShowUserRefundList/{username}")   //
-	List<Refund> ShowUserRefundList(@PathVariable("username") String username)
+	List<String> ShowUserRefundList(@PathVariable("username") String username)
 	{
+		List <String> refundsDefinition = new ArrayList<String>();
 		userInfo userinfo = usersdata.getByUserName(username);
-		return userinfo.getCredits().getHistoryRefunds();
+		
+		for(Refund ref : userinfo.getCredits().getHistoryRefunds()) {
+			refundsDefinition.add(ref.refundInfo());
+		}
+		
+		return refundsDefinition;
 	}
 	
 	
@@ -255,9 +268,5 @@ public class MainController {
 			
 			else return "Wrong password or email";
 		}
-	
-	
-	
-	
 }
 

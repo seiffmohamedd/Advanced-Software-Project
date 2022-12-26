@@ -25,8 +25,33 @@ Content-Type: application/json
 
 {
     "name": "Vodafone Cash",
-    "serviceName": "Landline",
+    "serviceName": "Mobile recharge",
     "number" : "961093",
+    "formComponentsNumber": "2",
+    "formComponent0" : "0Mobile Number",
+    "formComponent1" : "1Amount"
+}
+###
+POST  http://localhost:8080/admin/addsp HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Magdy Yacoub",
+    "serviceName": "Donations",
+    "number" : "902",
+    "formComponentsNumber": "3",
+    "formComponent0" : "0Mobile Number",
+    "formComponent1" : "1Amount",
+    "formComponent2" : "0category"
+}
+###
+POST  http://localhost:8080/admin/addsp HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Government",
+    "serviceName": "Landline",
+    "number" : "993",
     "formComponentsNumber": "2",
     "formComponent0" : "0Mobile Number",
     "formComponent1" : "1Amount"
@@ -39,7 +64,7 @@ Content-Type: application/json
 
 {
     "username": "Orcawy",
-    "amount"  : "200"
+    "amount"  : "300"
 }
 
 ###
@@ -51,8 +76,34 @@ Content-Type: application/json
     "password"  : "20201114",
     "totalcost" : "200.0",
     "spnumber" : "961093",
-    "servicename" : "Donations",
+    "servicename" : "Mobile recharge",
     "paymentMethod" : "cash"
+}
+
+###
+POST  http://localhost:8080/payservice HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "orcawy@gmail.com",
+    "password"  : "20201114",
+    "totalcost" : "200.0",
+    "spnumber" : "902",
+    "servicename" : "Donations",
+    "paymentMethod" : "wallet"
+}
+
+###
+POST  http://localhost:8080/payservice HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "orcawy@gmail.com",
+    "password"  : "20201114",
+    "totalcost" : "200.0",
+    "spnumber" : "993",
+    "servicename" : "Landline",
+    "paymentMethod" : "Credit Card"
 }
 
 ###
@@ -62,7 +113,7 @@ Content-Type: application/json
 {
     "email": "orcawy@gmail.com",
     "password": "20201114",
-    "payid": "1"
+    "payid": "3"
     
 }
 

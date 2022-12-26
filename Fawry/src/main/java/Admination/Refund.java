@@ -30,7 +30,28 @@ public class Refund {
         this.userinfo = c;
     }
     public String refundInfo(){
-        String s  = String.valueOf(paymentID) + refundStatus;
+        String s  = String.valueOf(paymentID) + " " +refundStatus + " " + userinfo.getUserName();
         return s;
     }
+
+
+	public userInfo getUserinfo() {
+		return userinfo;
+	}
+
+
+	public void setUserinfo(userInfo userinfo) {
+		this.userinfo = userinfo;
+	}
+
+
+	public int getPaymentID() {
+		return paymentID;
+	}
+
+
+	public String getRefundStatus() {
+		return refundStatus;
+	}
+    
 }

@@ -10,12 +10,13 @@ public class ServiceProvider {
 	
     
 	String name ;
-    public Service s;
+    private Service s;
     long number ;
     form f;
     
     public ServiceProvider(String name, Service s, long number, form f) {
 		this.name = name;
+//		System.out.println(s.getName());
 		this.s = s;
 		this.number = number;
 		this.f = f;
