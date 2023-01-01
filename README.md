@@ -63,7 +63,7 @@
     <li>open Eclipse IDE 2021-12</li>
     <li>click on file >> import >> Existing Maven Projects >> browse Fawry directory</li>
     <li>then run the com/Fawry/Fawry/FawryApplication.java</li>
-    <li>Enter <a href ="https://www.postman.com/crimson-escape-90569/workspace/exposed-postman-collection/collection/25138431-85b92603-720c-4f91-ab46-12b124bab8f2?action=share&creator=25138431 "> Here </a></li>
+    <li>Enter <a href ="https://www.postman.com/crimson-escape-90569/workspace/exposed-postman-collection/collection/25138431-85b92603-720c-4f91-ab46-12b124bab8f2?action=share&creator=25138431" target="_blank"> Here </a></li>
     <li>Now the requests are ordered and  ready to be sent to the server click send on each request then wait a sec to get your response!! </li>
 </ol>
 
