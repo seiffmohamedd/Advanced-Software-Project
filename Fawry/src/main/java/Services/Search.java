@@ -25,7 +25,7 @@ public class Search {
             	serviceList2.add(sss);
             }
         }
-		serviceList.clear();
+//		serviceList.clear();
         return serviceList2;
     }
 

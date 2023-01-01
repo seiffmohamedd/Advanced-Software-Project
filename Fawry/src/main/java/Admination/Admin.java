@@ -29,4 +29,28 @@ public class Admin {
     public void rejectRefund(Refund r){
         r.setRefundStatus("rejected");
     }
+    
+    public void acceptRefund(int payid,String username){
+        for(int i=0 ; i< Refunds.size();i++)
+        {
+            if(payid == Refunds.get(i).getPaymentID() && username.equals(Refunds.get(i).getUserinfo().getUserName()))
+            {
+                Refunds.get(i).setRefundStatus("Accepted");
+            }
+
+        }
+//        r.setRefundStatus("accepted");
+    }
+    
+    
+    public void rejectRefund(int payid,String username){
+        for(int i=0 ; i< Refunds.size();i++)
+        {
+            if(payid == Refunds.get(i).getPaymentID() && username.equals(Refunds.get(i).getUserinfo().getUserName()))
+            {
+                Refunds.get(i).setRefundStatus("Rejected");
+            }
+
+        }
+    }
 }

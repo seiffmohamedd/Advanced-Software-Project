@@ -113,8 +113,7 @@ Content-Type: application/json
 {
     "email": "orcawy@gmail.com",
     "password": "20201114",
-    "payid": "3"
-    
+    "payid": "3"  
 }
 
 ###
@@ -138,9 +137,30 @@ Content-Type: application/json
 
 {
     "servicename": "Mobile recharge",
-    "discountPercentage": 10
+    "discountPercentage": 20
     
 }
 ###
 
 GET http://localhost:8080/user/checkDiscounts?serviceName=Mobile recharge HTTP/1.1
+
+###
+POST  http://localhost:8080/admin/acceptanceOfRefunds HTTP/1.1
+Content-Type: application/json
+
+{
+    "payid": "3",
+    "username": "Orcawy",
+    "response":"accepted"
+
+}
+###
+POST  http://localhost:8080/admin/acceptanceOfRefunds HTTP/1.1
+Content-Type: application/json
+
+{
+    "payid": "3",
+    "username": "seif",
+    "response":"rejected"
+
+}

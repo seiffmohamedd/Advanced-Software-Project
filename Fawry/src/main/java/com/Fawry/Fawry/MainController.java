@@ -123,6 +123,7 @@ public class MainController {
 		ServiceProvider serviceProvider = spFactory.createServiceProvider(name,serviceFactory.createService(serviceName),number,sForm);
 		System.out.println(serviceProvider.getName() + " " + serviceProvider.getNumber() + " " + serviceProvider.getServiceName() + " " + serviceProvider.getServiceAcceptance());
 		return serviceFactory.createService(serviceName).addServiceProvider(serviceProvider);
+		
 	}
 
 	@PostMapping("/walletrecharge")
@@ -274,5 +275,25 @@ public class MainController {
 			
 			else return "Wrong password or email";
 		}
+	    
+	    @PostMapping("/admin/acceptanceOfRefunds")
+        String acceptanceOfRefunds(@RequestBody Map<String,String> JSON)
+        {
+            int payID=Integer.parseInt(JSON.get("payid").toString());
+            String username=JSON.get("username").toString();
+            String response = JSON.get("response").toString();
+            if(response.equals("accepted"))
+            {
+                admin.acceptRefund(payID, username);
+                return "Refund Accepted";
+            }
+
+            if(response.equals("rejected"))
+            {
+                admin.rejectRefund(payID, username);
+                return "Refund Refused";
+            }
+            return null;
+        }
 }
 
