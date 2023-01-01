@@ -15,5 +15,5 @@ public abstract class Field implements FormComponent {
     }
 
     public void editContent(){}
-    public void display(){}
+    public String display(){return null;}
 }

@@ -6,7 +6,14 @@ public class CreditCard extends payment{
     double balance ;
     long creditNumber ;
     int creditPassword ;
-    public void setCreditNumber(long creditNumber) {
+    
+    public CreditCard() {
+		super();
+	}
+	public CreditCard(int paymentNumber, Service s) {
+		super(paymentNumber, s);
+	}
+	public void setCreditNumber(long creditNumber) {
         this.creditNumber = creditNumber;
     }
     public long getCreditNumber() {
@@ -33,5 +40,12 @@ public class CreditCard extends payment{
             return false;
         }
         return true;
+    }
+    @Override
+    public String display() {
+    	String st = "";
+    	st += "Payment method: Credit Card" +" "+"Payment Number: " + String.valueOf(this.paymentNumber)
+    	+" "+ "Service Name: " + this.s.getName();
+    	return st; 
     }
 }

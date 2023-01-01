@@ -7,6 +7,7 @@ import java.util.List;
 
 public class usersData {
     List<userInfo> userInfos =new ArrayList<userInfo>();
+    
     public void addUser(userInfo U){
         userInfos.add(U);
     }
@@ -17,7 +18,7 @@ public class usersData {
             }
         }
     }
-    boolean searchByUserName(String u){
+    public boolean searchByUserName(String u){
         for (userInfo userInfo : userInfos){
             if(userInfo.getUserName().equals(u)){
                 return true;
@@ -25,7 +26,18 @@ public class usersData {
         }
         return false;
     }
-    boolean searchByUserEmail(String E){
+    
+    
+   public userInfo getByUserName(String u){
+        for (userInfo userInfo : userInfos){
+            if(userInfo.getUserName().equals(u)){
+                return userInfo;
+            }
+        }
+        return null;
+    }
+    
+    public boolean searchByUserEmail(String E){
         for (userInfo userInfo : userInfos){
             if(userInfo.getEmail().equals(E)){
                 return true;
@@ -33,7 +45,7 @@ public class usersData {
         }
         return false;
     }
-    boolean searchForEmailAndPassword(String E , String P){
+    public boolean searchForEmailAndPassword(String E , String P){
         for (userInfo userInfo : userInfos){
             if(userInfo.getEmail().equals(E) && !userInfo.getPassword().equals(P)){
                 System.out.println("the password is incorrect");
@@ -46,14 +58,15 @@ public class usersData {
         System.out.println("the email is not exist");
         return false;
     }
-    userInfo GetUserByUserEmail(String E){
+    public userInfo GetUserByUserEmail(String E){
         for (userInfo userInfo : userInfos){
-            if(userInfo.getUserName().equals(E)){
+            if(userInfo.getEmail().equals(E)){
                 return userInfo;
             }
         }
         return null;
     }
+    
     public void print(){
         for (userInfo U : userInfos){
             U.getInfo();

@@ -6,13 +6,13 @@ public class ServiceFactory {
 	Service service;
 	
 	public Service createService(String type) {
-		if(type == "Donations") {
+		if(type.equals("Donations")) {
 			this.service = Donations.getInstance();
 		}
-		else if(type == "Landline") {
+		else if(type.equals("Landline")) {
 			this.service = Landline.getInstance();
 		}
-		else if (type == "Mobile recharge"){
+		else if (type.equals("Mobile recharge")){
 			this.service = MobileRecharge.getInstance();
 		}
 		else {

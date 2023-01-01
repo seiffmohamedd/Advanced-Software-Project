@@ -9,9 +9,9 @@ public class Service {
     public String name;
     double totalCost;
     long number;
-    private boolean acceptCash;
+    protected boolean acceptCash;
     
-    List <ServiceProvider> SPs=new ArrayList<>();
+    private List <ServiceProvider> SPs = new ArrayList<>();
     
     public Service(){
     	acceptCash = false;
@@ -39,8 +39,12 @@ public class Service {
         this.totalCost = totalCost;
     }
 
-	public void addServiceProvider(ServiceProvider s){
+	public String addServiceProvider(ServiceProvider s){
         SPs.add(s);
+        for(ServiceProvider sp : SPs) {
+        	System.out.println(sp.getName());
+        }
+        return "Service Provider added successfully";
     }
     public ServiceProvider getServiceProviderByNumber(long n){
         for (ServiceProvider s : SPs){
@@ -51,11 +55,31 @@ public class Service {
         return null;
     }
     public boolean isAcceptingCash() {
-		return acceptCash;
+    	return acceptCash;
 	}
+    
+    public String displayAcceptance() {
+    	if(acceptCash == true) {
+			return "Accept Cash";
+		}
+    	return "Not Accepting";
+    }
 
 	public void setAcceptCash(boolean acceptCash) {
 		this.acceptCash = acceptCash;
 	}
 
+	public List<ServiceProvider> getSPs() {
+		return SPs;
+	}
+
+	public void setSPs(List<ServiceProvider> sPs) {
+		SPs = sPs;
+	}
+	//For testing & debug only
+//	public void display() {
+//		for(ServiceProvider sp : SPs) {
+//			System.out.print(sp.);
+//		}
+//	}
 }

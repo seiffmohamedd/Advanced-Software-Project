@@ -15,9 +15,8 @@ public class TextField extends Field {
         Scanner n = new Scanner(System.in);
         content=n.nextLine();
     }
-    public void display(){
-        System.out.println(name);
-        System.out.println(content);
+    public String display(){
+        return Title;
     }
 
     public String getContent() {

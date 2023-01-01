@@ -1,13 +1,15 @@
 package Payment;
 
-import Services.Service;
-import ServicesProvider.ServiceProvider;
+import Services.*;
+import ServicesProvider.*;
 
 import java.util.Scanner;
 
 public abstract class payment {
     int paymentNumber=0;
-    Service s = new Service();
+    Service s;
+    
+    
 //    public boolean pay(Service s , creditInfo  C){
 //        Scanner input = new Scanner(System.in);
 //        String choice;
@@ -50,7 +52,23 @@ public abstract class payment {
 //
 //    }
 
-    public void setS(Service s) {
+
+    
+    public payment() {}
+    
+	public payment(int paymentNumber, Service s) {
+	super();
+	this.paymentNumber = paymentNumber;
+	this.s = s;
+	}
+	public boolean validAmount(int totalCost) {
+		return false;
+	}
+	public payment(int paymentNumber) {
+		this.paymentNumber = paymentNumber;
+	}
+	
+	public void setS(Service s) {
         this.s = s;
     }
     public Service getS() {
@@ -64,4 +82,7 @@ public abstract class payment {
     public int getPaymentNumber() {
         return paymentNumber;
     }
+    
+    public String display(){return "Normal Payment";}
+    
 }

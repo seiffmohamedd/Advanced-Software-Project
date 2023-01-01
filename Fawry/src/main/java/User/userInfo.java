@@ -4,7 +4,7 @@ import Payment.creditInfo;
 import Payment.payment;
 
 public class userInfo {
-    creditInfo credits ;
+    creditInfo credits  = new creditInfo();
     String userName ;
     String password ;
     String Email ;

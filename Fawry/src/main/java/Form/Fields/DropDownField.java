@@ -25,10 +25,7 @@ public class DropDownField extends Field {
     public void addContent(String c){
         contents.add(c);
     }
-    public void display(){
-        System.out.println(name);
-        for (String content : contents){
-            System.out.print(content + " ");
-        }
+    public String display(){
+        return Title;
     }
 }

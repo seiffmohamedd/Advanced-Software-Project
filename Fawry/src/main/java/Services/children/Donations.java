@@ -7,7 +7,10 @@ public class Donations extends Service implements observer {
     
     private static Donations instance;
 
-    private Donations(){}
+    private Donations(){
+    	this.name = "Donations";
+    	this.acceptCash = true;
+    }
 
     public static Donations getInstance() {
         if (instance == null) {
